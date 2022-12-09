@@ -1,14 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <li>"Hello"</li>
-    </ul>
-</body>
+    <head>
+        <title>Calculator</title>
+        <style>
+            body{
+                font-family: sans-serif;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            #display{
+                width: 235px;
+                height: 50px;
+                margin: auto;
+                background-color: rgb(44, 43, 43);
+                color: white;
+                border: none;
+                border-radius: 5px;
+                text-align: right;
+                font-size: 28px;
+                padding: 5px;
+            }
+
+            #buttons{
+                width: 250px;
+                margin: auto;
+            }
+
+            #buttons table{
+                margin: auto;
+            }
+
+            #buttons table td{
+                width: 55px;
+                height: 55px;
+                text-align: center;
+                border: 1px solid #000;
+                background-color: #ccc;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+        </style>
+        <script>
+            function calculate(num){
+                document.getElementById('display').value += num;
+            }
+            function empty(){
+                var value = document.getElementById('display').value = '';
+            }
+            function backspace(){
+                var value = document.getElementById('display').value;
+                document.getElementById('display').value = value.substr(0, value.length - 1);
+            }
+            function equal(){
+                var result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            }
+        </script>
+    </head> 
+    <body>
+        <input type="text" id="display"/>
+        <div id="buttons">
+            <table>
+                <tr>
+                    <td onclick="empty()">AC</td>
+                    <td onclick="backspace()">⌫</td>
+                    <td onclick="calculate('%')">%</td>
+                    <td onclick="calculate('/')">÷</td>
+                </tr>
+                <tr>
+                    <td onclick="calculate('7')">7</td>
+                    <td onclick="calculate('8')">8</td>
+                    <td onclick="calculate('9')">9</td>
+                    <td onclick="calculate('*')">x</td>
+                </tr>
+                <tr>
+                    <td onclick="calculate('4')">4</td>
+                    <td onclick="calculate('5')">5</td>
+                    <td onclick="calculate('6')">6</td>
+                    <td onclick="calculate('-')">-</td>
+                </tr>
+                <tr>
+                    <td onclick="calculate('1')">1</td>
+                    <td onclick="calculate('2')">2</td>
+                    <td onclick="calculate('3')">3</td>
+                    <td onclick="calculate('+')">+</td>
+                </tr>
+                <tr>
+                    <td id="zero" onclick="calculate('0')">0</td>
+                    <td onclick="calculate('.')">.</td>
+                    <td onclick="equal()">=</td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
