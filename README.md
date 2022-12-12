@@ -85,4 +85,4 @@ $ flask run
 
 ###### 8. Go to local host to view calculator
 
-"127.0.0.1:5000/calculator"
+http://127.0.0.1:5000/calculator

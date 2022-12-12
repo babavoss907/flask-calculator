@@ -1,112 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="static/css/style.css">
+        <script type="text/javascript" src="static/script/script.js"></script>
         <title>Calculator</title>
-        <style>
-            body{
-                font-family: sans-serif;
-                font-size: 25px;
-                text-align: center;
-            }
-
-            #display{
-                width: 235px;
-                height: 50px;
-                margin: auto;
-                background-color: rgb(44, 43, 43);
-                color: white;
-                border: none;
-                border-radius: 5px;
-                text-align: right;
-                font-size: 28px;
-                padding: 5px;
-            }
-
-            #buttons{
-                width: 250px;
-                margin: auto;
-            }
-
-            #buttons table{
-                margin: auto;
-            }
-
-            #buttons table td{
-                width: 55px;
-                height: 55px;
-                text-align: center;
-                border: 1px solid #000;
-                background-color: #ccc;
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-        </style>
-        <script>
-            let numbers = [];
-            let result = 0;
-            let operator = null;
-            function calculate(char){
-                document.getElementById('display').value += char;
-                numbers.push(char);
-            }
-            function empty(){
-                var value = document.getElementById('display').value = '';
-            }
-            function backspace(){
-                var value = document.getElementById('display').value;
-                document.getElementById('display').value = value.substr(0, value.length - 1);
-            }
-            function equal(){
-                var result = eval(document.getElementById('display').value);
-                document.getElementById('display').value = result;
-                let xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function(){
-                    if(this.readyState == 4 && this.status == 200){
-                        let response = JSON.parse(this.responseText);
-                        result = response.result;
-                        display.innerHTML = result;
-                    }
-                };
-                xhttp.open('POST', '/calculate', true);
-                xhttp.setRequestHeader('Content-Type', 'application/json')
-                xhttp.send(JSON.stringify(result));
-            }
-        </script>
-    <!-- <script type="text/javascript" src="/js/app.js"></script> -->
     </head> 
     <body>
+        <h1>CryptoFi Calculator</h1>
         <input type="text" id="display"/>
         <div id="buttons">
             <table>
                 <tr>
-                    <td onclick="empty()">AC</td>
-                    <td onclick="backspace()">⌫</td>
-                    <td onclick="calculate('%')">%</td>
-                    <td onclick="calculate('/')">÷</td>
+                    <td id="symbol" onclick="empty()">AC</td>
+                    <td id="symbol" onclick="backspace()">⌫</td>
+                    <td id="symbol" onclick="calculate('%')">%</td>
+                    <td id="func" onclick="calculate('/')">÷</td>
                 </tr>
                 <tr>
-                    <td onclick="calculate(7)">7</td>
-                    <td onclick="calculate(8)">8</td>
-                    <td onclick="calculate(9)">9</td>
-                    <td onclick="calculate('*')">x</td>
+                    <td id="buttonstabletd" onclick="calculate(7)">7</td>
+                    <td id="buttonstabletd" onclick="calculate(8)">8</td>
+                    <td id="buttonstabletd" onclick="calculate(9)">9</td>
+                    <td id="func" onclick="calculate('*')">x</td>
                 </tr>
                 <tr>
-                    <td onclick="calculate(4)">4</td>
-                    <td onclick="calculate(5)">5</td>
-                    <td onclick="calculate(6)">6</td>
-                    <td onclick="calculate('-')">-</td>
+                    <td id="buttonstabletd" onclick="calculate(4)">4</td>
+                    <td id="buttonstabletd" onclick="calculate(5)">5</td>
+                    <td id="buttonstabletd" onclick="calculate(6)">6</td>
+                    <td id="func" onclick="calculate('-')">-</td>
                 </tr>
                 <tr>
-                    <td onclick="calculate(1)">1</td>
-                    <td onclick="calculate(2)">2</td>
-                    <td onclick="calculate(3)">3</td>
-                    <td onclick="calculate('+')">+</td>
+                    <td id="buttonstabletd" onclick="calculate(1)">1</td>
+                    <td id="buttonstabletd" onclick="calculate(2)">2</td>
+                    <td id="buttonstabletd" onclick="calculate(3)">3</td>
+                    <td id="func" onclick="calculate('+')">+</td>
                 </tr>
                 <tr>
-                    <td onclick="calculate(0)">0</td>
-                    <td onclick="calculate('.')">.</td>
-                    <td onclick="equal()">=</td>
+                    <td id="zero" onclick="calculate(0)">0</td>
+                    <td id="buttonstabletd" onclick="calculate('.')">.</td>
+                    <td id="buttonstabletd" onclick="equal()">=</td>
                 </tr>
             </table>
         </div>
