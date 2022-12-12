@@ -13,9 +13,11 @@ following will happen:
 3. When the user clicks the = sign it will use AJAX to send the javascript array that
 contains all the previously clicked numbers and operators to a Flask endpoint for
 processing.
+- changed so math is processed in the front end no need to evaluate in backend.
 4. The Flask endpoint will take the array of numbers and operators and perform a
 math operation on the array such as 3 + 5 - 9 and return the result as the
 response to the AJAX call.
+- Flask endpoint provides the response only in json. Does not perform logic.
 5. The calculator page will get the response from the AJAX call and update the
 display of the calculator to hold the resulting value.
 6. Return to step 2 so the user may continue using the calculator.
