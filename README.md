@@ -76,7 +76,7 @@ $ pipenv shell
 ###### 6. Install dependencies
 
 ```
-$ pip install requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ###### 7. Run app
